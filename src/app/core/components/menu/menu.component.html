@@ -1,0 +1,16 @@
+<nav class="navbar navbar-light bg-light navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">Dynamic Menu</a>
+    <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div [collapse]=isCollapsed class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngFor="let item of menuItems" class="nav-item">
+          <app-menu-item (closeMenuEvent)="isCollapsed = !isCollapsed" [item]="item" ></app-menu-item>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+<a class="nav-link" *ngIf="!item.children" [routerLink]="[item.route]" (click)="closeMenu()">
+  <i-bs class="icon" *ngIf="item.icon" [name]="convertToIcon(item.icon)"></i-bs>
+  <span>{{ item.title }}</span>
+</a>
+
+<div  *ngIf="item.children" class="btn-group" dropdown>
+  <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+          aria-controls="dropdown-basic">
+    <span>{{ item.title }}</span>
+    <span class="caret"></span>
+  </button>
+  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+      role="menu" aria-labelledby="button-basic">
+    <li *ngFor="let child of item.children" role="menuitem">
+<!--      <div class="wrapper">-->
+        <a class="dropdown-item nav-link" [routerLink]="[child.route]" (click)="closeMenu()">
+          <i-bs class="icon" *ngIf="child.icon" [name]="convertToIcon(child.icon)"></i-bs>
+          <span>{{child.title}}</span>
+        </a>
+<!--      </div>-->
+    </li>
+  </ul>
+</div>
